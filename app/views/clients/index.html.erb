@@ -1,0 +1,38 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+  <h1>Clientes</h1>
+
+  <%= link_to "Registrar Cliente", new_client_path %>
+
+  <div id="clients">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Nro. Cliente</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Película</th>
+          <th scope="col" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.id %></td>
+            <td><%= client.name %></td>
+            <td><%= client.age %></td>
+            <td>
+              <% if client.movies.any? %>
+                Cliente tiene una película arrendada
+              <% else %>
+                No tiene películas arrendadas
+              <% end %>
+            </td>
+            <td colspan="3"></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
